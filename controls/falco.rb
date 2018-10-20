@@ -35,7 +35,7 @@ control 'falco-2.0' do
   impact 0.7
   title 'falco should be running'
   desc 'Ensure falco is running'
-  only_if { !(virtualization.role == 'guest' && (virtualization.system == 'docker' or virtualization.system == 'lxd') }
+  only_if { !(virtualization.role == 'guest' && (virtualization.system == 'docker' or virtualization.system == 'lxd')) }
   describe processes('falco') do
     it { should exist }
     its('users') { should eq ['root'] }
@@ -47,7 +47,7 @@ control 'falco-3.0' do
   impact 0.7
   title 'falco should have log files'
   desc 'Ensure falco logs are present'
-  only_if { !(virtualization.role == 'guest' && (virtualization.system == 'docker' or virtualization.system == 'lxd') }
+  only_if { !(virtualization.role == 'guest' && (virtualization.system == 'docker' or virtualization.system == 'lxd')) }
   if os.redhat?
     describe file('/var/log/messages') do
       its('content') { should match 'falco: Loading rules from file ' }
