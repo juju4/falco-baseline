@@ -12,17 +12,17 @@ control 'falco -1.0' do # A unique ID for this control
   describe file('/etc/falco') do
     it { should be_directory }
     it { should be_owned_by 'root' }
-    its('mode') { should cmp '0750' }
+    its('mode') { should cmp '0700' }
   end
   describe file('/etc/falco/falco.yaml') do
     it { should be_file }
     it { should be_owned_by 'root' }
-    its('mode') { should cmp '0644' }
+    its('mode') { should cmp '0600' }
   end
   describe file('/etc/falco/falco_rules.yaml') do
     it { should be_file }
     it { should be_owned_by 'root' }
-    its('mode') { should cmp '0644' }
+    its('mode') { should cmp '0600' }
   end
   describe file('/usr/bin/falco') do
     it { should be_file }
